@@ -99,6 +99,9 @@ public abstract class TwitterClient {
 			}
 			return false;
 		}
+		
+		System.out.println("Successfuly connected to twitter");
+		
 		return true;
 	}
 

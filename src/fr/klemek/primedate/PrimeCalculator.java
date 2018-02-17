@@ -1,7 +1,10 @@
 package fr.klemek.primedate;
 
+import java.util.Arrays;
+
 /**
  * Calculate and check prime numbers
+ * 
  * @author Kleme
  */
 public abstract class PrimeCalculator {
@@ -12,12 +15,13 @@ public abstract class PrimeCalculator {
 	private static final long SQRT_MAX = (long) Math.sqrt(MAX) + 1;
 	private static final int MEMORY_SIZE = (int) (MAX >> 4);
 	private static final int BLOCK_MAX = (int) (1 << 4);
-	
+
 	private static boolean computed = false;
 	private static byte[] primes = new byte[MEMORY_SIZE];
 
 	/**
 	 * Get stored bit for number i
+	 * 
 	 * @param i
 	 * @return
 	 */
@@ -29,6 +33,7 @@ public abstract class PrimeCalculator {
 
 	/**
 	 * Set stored bit for number i
+	 * 
 	 * @param i
 	 */
 	private static void setBit(long i) {
@@ -41,7 +46,9 @@ public abstract class PrimeCalculator {
 	/**
 	 * Computes first million numbers, (takes ~25 ms)
 	 */
-	private static void computeList() {
+	public static void computeList() {
+		Arrays.fill(primes, (byte) 0);
+		long t0 = System.currentTimeMillis();
 		for (long i = 3; i < SQRT_MAX; i += 2)
 			if (!getBit(i)) {
 				long j = (i * i);
@@ -51,10 +58,13 @@ public abstract class PrimeCalculator {
 				}
 			}
 		computed = true;
+		System.out.println(
+				String.format("Calculated %d KB of primes in %d ms", MEMORY_SIZE / 1000, System.currentTimeMillis() - t0));
 	}
 
 	/**
 	 * Next prime stored
+	 * 
 	 * @param p
 	 * @return
 	 */
@@ -67,6 +77,7 @@ public abstract class PrimeCalculator {
 
 	/**
 	 * Check if a number is prime by calculating its block
+	 * 
 	 * @param number
 	 * @return
 	 */

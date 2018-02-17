@@ -13,6 +13,8 @@ import java.util.TimerTask;
  */
 public abstract class MainProcess {
 
+	private final static String VERSION = "v1.1";
+	
 	private final static SimpleDateFormat date2num = new SimpleDateFormat("yyyyMMddHHmm");
 	private final static SimpleDateFormat sdf = new SimpleDateFormat("MMMM d, yyyy 'at' HH:mm", Locale.ENGLISH);
 	private final static NumberFormat nf = NumberFormat.getNumberInstance(Locale.ENGLISH);
@@ -35,6 +37,8 @@ public abstract class MainProcess {
 	}
 
 	public static void main(String[] args) {
+
+		System.out.println(String.format("PrimeDate %s%n%s",VERSION,Calendar.getInstance().getTime()));
 		
 		if(args.length < 1) {
 			System.out.println("Argument 1 must be a file containing customer keys");
@@ -42,6 +46,9 @@ public abstract class MainProcess {
 		}
 		
 		if(TwitterClient.setUpTwitter(args[0])) {
+			
+			PrimeCalculator.computeList();
+			
 			Timer timer = new Timer();
 			timer.scheduleAtFixedRate(new TimerTask() {
 				@Override
