@@ -15,7 +15,7 @@ import java.util.TimerTask;
  */
 public abstract class MainProcess {
 
-	private final static String VERSION = "v1.2";
+	private final static String VERSION = "v1.3";
 
 	private final static SimpleDateFormat DATE_TO_NUM = new SimpleDateFormat("yyyyMMddHHmm");
 
