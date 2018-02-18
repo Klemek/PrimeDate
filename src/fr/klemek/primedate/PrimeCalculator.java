@@ -87,7 +87,7 @@ public abstract class PrimeCalculator {
 		long endSqrt = (long) Math.sqrt(end) + 1;
 
 		byte block = 0;
-		int p = 3;
+		int p = 2;
 		while (p < endSqrt) {
 			p = nextPrime(p);
 
