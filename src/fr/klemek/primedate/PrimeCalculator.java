@@ -86,10 +86,8 @@ public abstract class PrimeCalculator {
 		long end = start + BLOCK_MAX;
 		long endSqrt = (long) Math.sqrt(end) + 1;
 
-		System.out.println(number);
-		
 		byte block = 0;
-		int p = 2;
+		int p = 3;
 		while (p < endSqrt) {
 			p = nextPrime(p);
 
@@ -103,9 +101,6 @@ public abstract class PrimeCalculator {
 			}
 		}
 		byte mask = (byte) (1 << ((number >> 1) & 7));
-
-		System.out.println(byteToBinary(block));
-		System.out.println(byteToBinary(mask));
 		
 		return !((block & mask) != 0);
 	}
@@ -129,10 +124,6 @@ public abstract class PrimeCalculator {
 		if (number < MAX)
 			return !getBit(number);
 		return isPrimeByBlock(number);
-	}
-	
-	public static String byteToBinary(byte b) {
-		return String.format("%8s", Integer.toBinaryString(b & 0xFF)).replace(' ', '0');
 	}
 
 }
