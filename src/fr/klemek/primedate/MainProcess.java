@@ -15,7 +15,7 @@ import java.util.TimerTask;
  */
 public abstract class MainProcess {
 
-	private final static String VERSION = "v1.3";
+	private final static String VERSION = "v1.4";
 
 	private final static SimpleDateFormat DATE_TO_NUM = new SimpleDateFormat("yyyyMMddHHmm");
 
@@ -25,10 +25,12 @@ public abstract class MainProcess {
 
 	private final static String[] DATE_SENTENCES = new String[] { "The date is %1$s and it's %2$s",
 			"We are %1$s and it's already %2$s", "It's already %2$s today", "Today is %1$s and it's %2$s",
-			"It's %2$s and today's %1$s" };
+			"It's %2$s and today's %1$s", "It's %2$s on %1$s", "Already %2$s on %1$s" };
 
 	private final static String[] PRIME_SENTENCES = new String[] { "%s is a prime number",
-			"%s cannot be divided by another number", "nobody can divide %s", "%s is prime" };
+			"%s cannot be divided by another number", "nobody can divide %s", "%s is prime", "%s is prime as fuck",
+			"%s is prime as hell", "%s is prime as shit", "%s sure is prime", "%s is pretty prime",
+			"you can trust %s to be prime", "%s is like other primes" };
 
 	private final static String[] END_SENTENCES = new String[] { "", "Pretty cool, huh?", "It blows your mind!",
 			"You can forget it now.", "You wasted 20 seconds of your time.", "That's cool!", "Isn't it cool?",
@@ -103,7 +105,7 @@ public abstract class MainProcess {
 
 		String end = END_SENTENCES[r7];
 		if (prime.endsWith(","))
-			end = end.substring(0, 1) + end.substring(1);
+			end = end.substring(0, 1).toLowerCase() + end.substring(1);
 
 		return greetings + " " + date + " " + prime + " " + end;
 	}
@@ -133,16 +135,16 @@ public abstract class MainProcess {
 				@Override
 				public void run() {
 					Calendar currentTime = Calendar.getInstance();
-					currentTime.add(Calendar.MILLISECOND, -currentTime.getTimeZone().getOffset(currentTime.getTimeInMillis()));
+					currentTime.add(Calendar.MILLISECOND,
+							-currentTime.getTimeZone().getOffset(currentTime.getTimeInMillis()));
 					checkTime(currentTime, false);
 				}
 			}, 0, 1 * 60 * 1000);
-			
-			/*Calendar time = Calendar.getInstance();
-			while (true) {
-				checkTime(time, true);
-				time.add(Calendar.MINUTE, 1);
-			}*/
+
+			/*
+			 * Calendar time = Calendar.getInstance(); while (true) { checkTime(time, true);
+			 * time.add(Calendar.MINUTE, 1); }
+			 */
 		}
 	}
 
