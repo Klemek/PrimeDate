@@ -15,13 +15,14 @@ import java.util.TimerTask;
  */
 public abstract class MainProcess {
 
-	private final static String VERSION = "v1.4";
+	private final static String VERSION = "v1.5";
 
 	private final static SimpleDateFormat DATE_TO_NUM = new SimpleDateFormat("yyyyMMddHHmm");
 
 	private final static String[] GREETINGS_SENTENCES = new String[] { "Hi", "Hello there", "Good %s", "What's up?",
 			"Greetings", "How are you?", "Hey", "How are you doing?", "How's life?", "Long time no see",
-			"It's been a while", "How do you do?", "Yo", "Howdy", "Sup?", "Whazzup?" };
+			"It's been a while", "How do you do?", "Yo", "Howdy", "Sup?", "Whazzup?", "Yoooooo", "Bonjour", "Hola",
+			"Hallo", "Salam", "Aloha", "Hey", "Heyy", "Heyy", "Heyyy", "Heyyyy", "Heyyyyy" };
 
 	private final static String[] DATE_SENTENCES = new String[] { "The date is %1$s and it's %2$s",
 			"We are %1$s and it's already %2$s", "It's already %2$s today", "Today is %1$s and it's %2$s",
@@ -37,7 +38,12 @@ public abstract class MainProcess {
 			"You should stop reading these tweets...", "That's a good password.", "Maybe not.", "Why ? ...",
 			"Pls help stuck in prime factory", "Why do you read these ?", "Can someone check ?", "Really ?", "Cool.",
 			"You can use it.", "Google it.", "How do I stop this?", "Send STOP to not receive this anymore.", "Yes.",
-			"It's true.", "Move on." };
+			"It's true.", "Move on.", "That's no FAKE news!", "Soooo hard to calculate by hand!", "It is also my IQ.",
+			"Add 1 and it doesn't work anymore.", "I'm a bot, I know that stuff.", "Awesome!",
+			"Next one should be better!", "Let's calculate its factorial now...", "There's a phone number in it.",
+			"Don't do this at home, kids.", "Highest one so far!", "Next one will blow your mind!",
+			"That's the exact number of bacteria in your body.", "Don't believe me? Fine.",
+			"Funniest thing of the day.", "See you next time!", "Bye!", "See ya!", "See you later!" };
 
 	private final static char[] SENTENCE_ENDS = new char[] { '.', '!', ',' };
 
@@ -114,11 +120,11 @@ public abstract class MainProcess {
 
 		Locale.setDefault(Locale.ENGLISH);
 
-		final int max_random = GREETINGS_SENTENCES.length * SENTENCE_ENDS.length * DATE_SENTENCES.length
-				* SENTENCE_ENDS.length * PRIME_SENTENCES.length * SENTENCE_ENDS.length * END_SENTENCES.length;
+		final int max_random = GREETINGS_SENTENCES.length * DATE_SENTENCES.length * PRIME_SENTENCES.length
+				* END_SENTENCES.length;
 
-		System.out.println(String.format("PrimeDate %s%n%s%n%d+ sentences available randomly", VERSION,
-				Calendar.getInstance().getTime(), max_random));
+		System.out.println(String.format("PrimeDate %s%n%s%n%s+ sentences available randomly", VERSION,
+				Calendar.getInstance().getTime(), NumberFormat.getInstance().format(max_random)));
 
 		if (args.length < 1) {
 			System.out.println("Argument 1 must be a file containing customer keys");
