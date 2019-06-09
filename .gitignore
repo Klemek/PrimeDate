@@ -1,4 +1,5 @@
 /out/
+/target/
 /access_token.txt
 /consumer_keys.txt
 /info.txt
