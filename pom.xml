@@ -90,7 +90,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>fr.klemek.englishparser.Launch</mainClass>
+                            <mainClass>fr.klemek.primedate.MainProcess</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
